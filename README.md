@@ -19,4 +19,5 @@ pip install pyinstaller
 ```
 pyinstaller CR7News.py
 ```
-After the above steps executable for windows will be made.
+After the above steps CR7News executable file for windows will be made in the **/dist** directory.
+Create **News.db** and **RemovedNews.db** files in the **/dist** directory and run the CR7News executable to start using the app.
