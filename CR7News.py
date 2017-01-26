@@ -12,16 +12,16 @@ def get_news():
 	soup = BeautifulSoup(req.content,"html.parser")
 
 	for i in soup.find_all("span", attrs = {'itemprop': 'name', 'class': 'title'}):
-	    if i.text not in GoalNews:
-	        GoalNews.append(i.text)
+		if i.text not in GoalNews:
+			GoalNews.append(i.text)
 
 	for i in soup.find_all("span", attrs = {'itemprop': 'headline', 'class': 'title'}):
-	    if i.text not in GoalNews:
-	        GoalNews.append(i.text)
+		if i.text not in GoalNews:
+			GoalNews.append(i.text)
 
 	for i in soup.find_all("h4", attrs = {'itemprop': 'name', 'class': 'headline'}):
-	    if i.text not in GoalNews:
-	        GoalNews.append(i.text)
+		if i.text not in GoalNews:
+			GoalNews.append(i.text)
 
 	return GoalNews
 
@@ -34,15 +34,17 @@ def fill_listbox():
 	fl.close()
 
 	for news in get_news():
-	    NewsTitle = news.split(" ")
-	    for word in NewsTitle:
-	        if word == "CR7" or word.lower() == "cristiano" or word.lower() == "ronaldo":
+		NewsTitle = news.split(" ")
+		for word in NewsTitle:
+			if word == "CR7" or word.lower() == "cristiano" or word.lower() == "ronaldo":
 				if news not in listbox.get(0, END) and news not in RemovedNews:
 					listbox.insert(0, news)
 
 root = Tk()
 root.geometry("600x400")
 root.title("CR7 News!")
+img = PhotoImage("photo", file="icon.png")
+root.tk.call('wm', 'iconphoto', root._w, img)
 
 def Button1():
 	with open('News.db', 'w') as fl:
