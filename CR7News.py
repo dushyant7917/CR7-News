@@ -46,13 +46,6 @@ root.title("CR7 News!")
 img = PhotoImage("photo", file="icon.png")
 root.tk.call('wm', 'iconphoto', root._w, img)
 
-def Button1():
-	with open('News.db', 'w') as fl:
-		for news in listbox.get(0, END):
-			fl.write(news + "\n")
-
-	fl.close()
-
 def Button2():
 	with open('RemovedNews.db', 'a') as fl:
 		fl.write(listbox.get(ANCHOR) + "\n")
@@ -92,7 +85,7 @@ button2.pack(fill=X, side=LEFT, expand=1)
 try:
 	RemovedNews = []
 	with open('News.db', 'r') as fl, open('RemovedNews.db', 'r') as rf:
-		for line in fl:
+		for line in rf:
 			RemovedNews.append(line.replace("\n", ""))
 
 		for news in fl:
